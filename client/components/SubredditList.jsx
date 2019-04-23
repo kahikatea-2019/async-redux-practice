@@ -5,9 +5,9 @@ import Post from './Post'
 
 const Subreddit = ({ subreddits }) => (
   <div>
-    {subreddits.map((post, i) =>
+    {subreddits.map(post =>
       <Post
-        key={i}
+        key={post}
         title={post.title}
       />
     )}
