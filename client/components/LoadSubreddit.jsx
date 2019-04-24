@@ -4,7 +4,9 @@ import { fetchPosts } from '../actions'
 
 class LoadSubreddit extends React.Component {
   state = {
-    subreddit: ''
+    subreddit: '',
+    dateandtime: '',
+    summary: ''
   }
 
 handleChange = (e) => {
@@ -12,13 +14,6 @@ handleChange = (e) => {
     subreddit: e.target.value
   })
 }
-
-// handleSave = () => {
-//   this.props.dispatch(fetchPosts(this.state.subreddit))
-//   this.setState({
-//     subreddit: ''
-//   })
-// }
 
 render () {
   const { fetchPosts, children } = this.props
