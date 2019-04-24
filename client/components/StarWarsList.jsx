@@ -3,20 +3,21 @@ import { connect } from 'react-redux'
 
 import Star from './Star'
 
-const StarWars = ({ starWarsData }) => (
-  <div>
-    {starWarsData.map(item =>
+const StarWars = props => {
+  const { starWarsData } = props
+  return (
+    <div>
       <Star
-        key={item.name}
-        name={item.name}
+        key={ starWarsData.name}
+        name={starWarsData.name}
       />
-    )}
-  </div>
-)
+    </div>
+  )
+}
 
 const mapStateToProps = (state) => {
   return {
-    starwarsData: state.starwars
+    starWarsData: state.starWars
   }
 }
 

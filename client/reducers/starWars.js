@@ -1,6 +1,6 @@
 import { RECEIVE_STARWARS } from '../actions'
 
-function starWars (state = [], action) {
+function starWars (state = {}, action) {
   switch (action.type) {
     case RECEIVE_STARWARS:
       return action.starWarsData
