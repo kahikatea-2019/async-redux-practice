@@ -9,8 +9,8 @@ const ApiList = props => {
   return (
     <div>
       <Person
-        key={ character.name}
-        name={ character.name}
+        key={character.name}
+        name={character.name}
       />
     </div>
   )
@@ -18,7 +18,7 @@ const ApiList = props => {
 
 const mapStateToProps = (state) => {
   return {
-    character: state.apiList
+    character: state.character
   }
 }
 

@@ -2,41 +2,6 @@ import React from 'react'
 import { connect } from 'react-redux'
 import { fetchApi } from '../actions'
 
-
-
-
-const LoadApi = ({ children, dispatch})
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 class LoadApi extends React.Component {
 state = {
   name: ''
@@ -44,12 +9,14 @@ state = {
 
 render () {
   const { fetchApi, children } = this.props
+
   return (
 
-    <React.Fragment>
+    <div>
       <button onClick={() => fetchApi(this.state.name)}>Fetch StarWars</button>
       {children}
-    </React.Fragment>
+    </div>
+
   )
 }
 }
