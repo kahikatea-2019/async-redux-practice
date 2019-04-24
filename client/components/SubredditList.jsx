@@ -10,6 +10,7 @@ const Subreddit = ({ subreddits }) => (
         key={post}
         title={post.title}
         time={new Date(post.created_utc * 1000).toString()}
+        preview={post.selftext.slice(0, 30)}
       />
     )}
   </div>
