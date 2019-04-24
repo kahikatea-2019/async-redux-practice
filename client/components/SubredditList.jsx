@@ -4,13 +4,14 @@ import { connect } from 'react-redux'
 import Post from './Post'
 
 const Subreddit = ({ subreddits }) => (
-  
+
   <div>
     {subreddits.map(post =>
       <Post
         key={post}
         title={post.title}
-        date={post.created_utc}
+        date={Date(post.created_utc * 1000)}
+        selftext={post.selftext}
       />
     )}
   </div>
