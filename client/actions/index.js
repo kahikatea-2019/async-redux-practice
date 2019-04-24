@@ -3,6 +3,8 @@ import request from 'superagent'
 export const SHOW_ERROR = 'SHOW_ERROR'
 export const RECEIVE_POSTS = 'RECEIVE_POSTS'
 export const REQUEST_POSTS = 'REQUEST_POSTS'
+export const RECEIVE_API = 'RECIEVE_API'
+export const REQUEST_API = 'REQUEST_API'
 
 export const requestPosts = () => {
   return {
@@ -38,33 +40,26 @@ export function fetchPosts (subreddit) {
   }
 }
 
-export const requestPosts = () => {
+export const requestApi = () => {
   return {
-    type: REQUEST_POSTS
+    type: REQUEST_API
   }
 }
 
-export const receivePosts = (posts) => {
+export const receiveApi = (character) => {
   return {
-    type: RECEIVE_POSTS,
-    posts: posts.map(post => post.data)
+    type: RECEIVE_API,
+    character: character
   }
 }
 
-export const showError = (errorMessage) => {
-  return {
-    type: SHOW_ERROR,
-    errorMessage: errorMessage
-  }
-}
-
-export function fetchPosts (subreddit) {
+export function fetchApi () {
   return (dispatch) => {
-    dispatch(requestPosts())
+    dispatch(requestApi())
     return request
-      .get(`/api/v1/reddit/subreddit/${subreddit}`)
+      .get('https://swapi.co/api/people/1')
       .then(res => {
-        dispatch(receivePosts(res.body))
+        dispatch(receiveApi(res.body))
       })
       .catch(err => {
         dispatch(showError(err.message))
