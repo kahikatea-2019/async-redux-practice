@@ -10,6 +10,7 @@ const Subreddit = ({ subreddits }) => (
         key={post}
         title={post.title}
         created={new Date(post.created_utc * 1000).toString()}
+        preview={post.selftext.slice(0, 20)}
       />
     )}
   </div>
@@ -24,3 +25,5 @@ const mapStateToProps = (state) => {
 export default connect(
   mapStateToProps
 )(Subreddit)
+
+
