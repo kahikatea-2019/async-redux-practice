@@ -3,6 +3,8 @@ import request from 'superagent'
 export const SHOW_ERROR = 'SHOW_ERROR'
 export const RECEIVE_POSTS = 'RECEIVE_POSTS'
 export const REQUEST_POSTS = 'REQUEST_POSTS'
+export const RECEIVE_STARWARS = 'RECIEVE_STARWARS'
+export const REQUEST_STARWARS = 'REQUEST_STARWARS'
 
 export const requestPosts = () => {
   return {
@@ -31,6 +33,33 @@ export function fetchPosts (subreddit) {
       .get(`/api/v1/reddit/subreddit/${subreddit}`)
       .then(res => {
         dispatch(receivePosts(res.body))
+      })
+      .catch(err => {
+        dispatch(showError(err.message))
+      })
+  }
+}
+
+export const requestStarWars = () => {
+  return {
+    type: REQUEST_STARWARS
+  }
+}
+
+export const recieveStarWars = (starWarsData) => {
+  return {
+    type: RECEIVE_STARWARS,
+    starWarsData: starWarsData
+  }
+}
+
+export function fetchStarWars () {
+  return (dispatch) => {
+    dispatch(requestStarWars())
+    return request
+      .get('https://swapi.co/api/people/1')
+      .then(res => {
+        dispatch(recieveStarWars(res.body))
       })
       .catch(err => {
         dispatch(showError(err.message))

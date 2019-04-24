@@ -17,7 +17,7 @@ class LoadSubreddit extends React.Component {
       const { children, dispatch } = this.props
       return (
         <div>
-          <input name="subreddit" onChange={this.handleChange} value={this.state.wombat} />
+          <input name="subreddit" onChange={this.handleChange} value={this.state.subreddit} />
           <button onClick={() => dispatch(fetchPosts(this.state.subreddit))}>
           Fetch Posts
           </button>
