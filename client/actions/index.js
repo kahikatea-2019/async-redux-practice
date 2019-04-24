@@ -3,6 +3,7 @@ import request from 'superagent'
 export const SHOW_ERROR = 'SHOW_ERROR'
 export const RECEIVE_POSTS = 'RECEIVE_POSTS'
 export const REQUEST_POSTS = 'REQUEST_POSTS'
+export const RECEIVE_DRINKS = 'RECEIVE_DRINKS'
 
 export const requestPosts = () => {
   return {
@@ -31,6 +32,27 @@ export function fetchPosts (subreddit) {
       .get(`/api/v1/reddit/subreddit/${subreddit}`)
       .then(res => {
         dispatch(receivePosts(res.body))
+      })
+      .catch(err => {
+        dispatch(showError(err.message))
+      })
+  }
+}
+
+export const receiveDrink = (drinks) => {
+  return {
+    type: RECEIVE_DRINKS,
+    drinks
+    
+  }
+}
+export function fetchDrinks () {
+  return (dispatch) => {
+    dispatch(requestPosts())
+    return request
+      .get(`https://www.thecocktaildb.com/api/json/v1/1/random.php`)
+      .then(res => {
+        dispatch(receiveDrink(res.body.drinks))
       })
       .catch(err => {
         dispatch(showError(err.message))

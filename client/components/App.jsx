@@ -4,6 +4,8 @@ import ErrorMessage from './ErrorMessage'
 import LoadSubreddit from './LoadSubreddit'
 import SubredditList from './SubredditList'
 import WaitIndicator from './WaitIndicator'
+import CocktailLoadList from './CocktailLoadList'
+import CocktailList from './CocktailList'
 
 const App = () => (
   <div className='app'>
@@ -11,7 +13,12 @@ const App = () => (
     <LoadSubreddit>
       <WaitIndicator />
     </LoadSubreddit>
+    <CocktailLoadList >
+      <WaitIndicator />
+    </CocktailLoadList>
     <SubredditList />
+    <CocktailList />
+
   </div>
 )
 
