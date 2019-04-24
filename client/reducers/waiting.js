@@ -1,7 +1,8 @@
 import {
   SHOW_ERROR,
   REQUEST_POSTS,
-  RECEIVE_POSTS } from '../actions'
+  RECEIVE_POSTS,
+  REQUEST_NASA } from '../actions'
 
 const waiting = (state = false, action) => {
   switch (action.type) {
@@ -13,6 +14,9 @@ const waiting = (state = false, action) => {
 
     case SHOW_ERROR:
       return false
+
+    case REQUEST_NASA:
+      return true
 
     default:
       return state
