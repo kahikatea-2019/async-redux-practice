@@ -8,7 +8,7 @@ const Subreddit = ({ subreddits }) => (
     {subreddits.map(post =>
       <Post
         key={post}
-        title={post.title}
+        post={post}
       />
     )}
   </div>
