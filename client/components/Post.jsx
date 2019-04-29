@@ -1,7 +1,10 @@
 import React from 'react'
 
-const Post = ({ title }) => (
-  <div>{title}</div>
+const Post = ({ created, title, preview }) => (
+  <>
+  <div>Date Created: {created} Post Title: {title} <br />
+  </div>
+  </>
 )
 
 export default Post
