@@ -7,9 +7,8 @@ const Subreddit = ({ subreddits }) => (
   <div>
     {subreddits.map(post =>
       <Post
-        key={post}
-        title={post.title}
-        created={new Date(post.created_utc * 1000).toString()}
+        key={post.title}
+        post={post}
       />
     )}
   </div>
