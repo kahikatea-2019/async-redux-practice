@@ -3,6 +3,10 @@ import request from 'superagent'
 export const SHOW_ERROR = 'SHOW_ERROR'
 export const RECEIVE_POSTS = 'RECEIVE_POSTS'
 export const REQUEST_POSTS = 'REQUEST_POSTS'
+export const RECEIVE_STARWARS = 'RECIEVE_STARWARS'
+export const REQUEST_STARWARS = 'REQUEST_STARWARS'
+
+// const gotUrl = 'https://anapioficeandfire.com/api/houses/378'
 
 export const requestPosts = () => {
   return {
@@ -37,3 +41,30 @@ export function fetchPosts (subreddit) {
       })
   }
 }
+
+export const requestStarWars = () => {
+  return {
+    type: REQUEST_STARWARS
+  }
+}
+
+export const recieveStarWars = (starWarsData) => {
+  return {
+    type: RECEIVE_STARWARS,
+    starWarsData: starWarsData
+  }
+}
+
+export function fetchStarWars () {
+  return (dispatch) => {
+    dispatch(requestStarWars())
+    return request
+      .get('https://swapi.co/api/people/3')
+      .then(res => {
+        dispatch(recieveStarWars(res.body))
+      })
+      .catch(err => {
+        dispatch(showError(err.message))
+      })
+  }
+} 
