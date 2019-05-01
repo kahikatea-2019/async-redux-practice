@@ -1,7 +1,13 @@
 import React from 'react'
 
-const Post = ({ title }) => (
-  <div>{title}</div>
+const redditPost = ({ title, dateAndTime, summary }) => (
+  <div>{title}
+    <br/>
+    {dateAndTime}
+    <br/>
+    {summary}
+    <br/>
+  </div>
 )
 
-export default Post
+export default redditPost
