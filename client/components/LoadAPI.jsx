@@ -14,6 +14,7 @@ render () {
   return ( 
 
     <div>
+      <input type="text" name={name} />
       <button onClick={() => fetchApi(this.state.name)}>Fetch Game of Thrones Character</button>
       {children}
     </div>

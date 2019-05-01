@@ -56,7 +56,7 @@ export const receiveApi = (character) => {
 export function fetchApi () {
   return (dispatch) => {
     dispatch(requestApi())
-    return request.get('https://anapioficeandfire.com/api/characters/583')
+    return request.get('https://anapioficeandfire.com/api/characters/')
       .then(res => {
         dispatch(receiveApi(res.body))
       })
