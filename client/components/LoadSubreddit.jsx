@@ -1,6 +1,7 @@
 import React from 'react'
 import {connect} from 'react-redux'
 import {fetchPosts} from '../actions'
+import {fetchPlanet} from '../actions'
 
 class LoadSubreddit extends React.Component {
   state = {
@@ -22,7 +23,10 @@ class LoadSubreddit extends React.Component {
           <label>
           <input onChange={this.handleChange} placeholder={this.state.subreddit} type="text" name="subreddit" />
           </label>
-          <input onClick={() => dispatch(fetchPosts(this.state.subreddit))} type="submit" value="Fetch Posts" />
+          <input onClick={() => {
+            dispatch(fetchPlanet())
+            dispatch(fetchPosts(this.state.subreddit))
+          }} type="submit" value="Fetch Posts" />
         </form>
         <br/>
         {children}
