@@ -1,7 +1,7 @@
 import React from 'react'
-import {connect} from 'react-redux'
-import {fetchPosts} from '../actions'
-import {fetchPlanet} from '../actions'
+import { connect } from 'react-redux'
+import { fetchPosts } from '../actions'
+import { fetchPlanet } from '../actions'
 
 class LoadSubreddit extends React.Component {
   state = {
@@ -13,17 +13,18 @@ class LoadSubreddit extends React.Component {
       [e.target.name]: e.target.value
     })
   }
-  
+
   render () {
-    const {children, dispatch} = this.props
+    const { children, dispatch } = this.props
     return (
       <div>
         <p>reddit.com/r/{this.state.subreddit}</p>
-        <form>
+        <form method="get" action="">
           <label>
-          <input onChange={this.handleChange} placeholder={this.state.subreddit} type="text" name="subreddit" />
+            <input onChange={this.handleChange} placeholder={this.state.subreddit} type="text" name="subreddit" />
           </label>
-          <input onClick={() => {
+          <input onClick={(event) => {
+            event.preventDefault()
             dispatch(fetchPlanet())
             dispatch(fetchPosts(this.state.subreddit))
           }} type="submit" value="Fetch Posts" />

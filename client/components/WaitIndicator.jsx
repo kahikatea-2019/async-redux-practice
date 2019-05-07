@@ -9,7 +9,7 @@ const WaitIndicator = (props) => {
 
 function mapStateToProps (state) {
   return {
-    waiting: state.waiting
+    waiting: state.incomingRequests > 0
   }
 }
 

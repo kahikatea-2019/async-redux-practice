@@ -1,11 +1,11 @@
 import React from 'react'
-import {connect} from 'react-redux'
+import { connect } from 'react-redux'
 
 import Post from './Post'
 
-const Subreddit = ({subreddits, planets}) => (
+const Subreddit = ({ subreddits, planets, ready }) => (
   <div>
-    {subreddits.map(post =>
+    {ready && subreddits.map(post =>
       <Post
         key={post.title}
         title={post.title}
@@ -20,7 +20,8 @@ const Subreddit = ({subreddits, planets}) => (
 const mapStateToProps = (state) => {
   return {
     subreddits: state.subreddits,
-    planets: state.planets
+    planets: state.planets,
+    ready: state.incomingRequests < 1
   }
 }
 
